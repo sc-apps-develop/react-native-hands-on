@@ -1,10 +1,8 @@
-# react-native-template
+# React Native 環境構築手順
 
-ReactNative にてアプリ開発を実施する際にテンプレートとするリポジトリ  
-配置してあるコンポーネントはサンプルです  
-不要なものは削除して利用してください
+以下手順にしたがって環境構築を行ってください
 
-## 注意！
+## clone 前の注意点
 
 改行コードの自動変換を`false`にしてください  
 以下コマンドを実行することで設定できます
@@ -23,9 +21,7 @@ git config --global -l
 
 一覧の中に`core.autocrlf=false`というような記載があれば OK
 
-# 1. 環境構築
-
-## 1-1. 開発に必要なソフトウェアのインストール
+## 1. 開発に必要なソフトウェアのインストール
 
 まずは開発にて利用する各種ソフトウェアのインストールを行います  
 一応参考サイトも載せておきますが、一生懸命書いたので  
@@ -60,9 +56,9 @@ MacOS 利用の方は参考サイトの内容にて環境構築をお願いし�
 Android Studio に JDK が同梱されていますので、別でインストールする必要はありません  
 （すでに java8 を導入している方はそれを利用するでも OK です）
 
-### **① IDE**
+### **① 統合開発環境**
 
-手始めに統合開発環境のインストールを行います  
+手始めに統合開発環境（以降 IDE）のインストールを行います  
 以下手順で実施してください
 
 ### **①-1 Visual Studio Code**
@@ -74,16 +70,7 @@ https://code.visualstudio.com/
 
 インストーラを起動して道なりにウィザードを進めていけば問題なくインストールできるかと思います
 
-### **①-2 vscode の拡張機能**
-
-vscode の拡張機能をインストールします  
-Extensions から以下の拡張機能を検索してインストールしてください
-
-![vscode拡張機能](/readme_img/vscode_extensions.png)
-
-[React Native Tools](https://marketplace.visualstudio.com/items?itemName=msjsdiag.vscode-react-native)
-
-### **①-3 フォーマッタ（vscode の拡張機能）**
+### **①-2 フォーマッタ（vscode の拡張機能、ここはお好みで良いです）**
 
 以下の拡張機能のインストールを行ってください
 
@@ -262,7 +249,7 @@ ReactNative はビルド時に Python を利用しているため Python の実�
 [Python の公式サイト](https://www.python.org/)よりインストーラをダウンロード、起動してインストールを行ってください  
 3 系の最新版で OK です
 
-#### インストール後の手順（Chocolatey の導入有無に関係なく実施してください）
+#### Python インストールの確認
 
 Python はインストール後、実行可能とするために  
 OS の再起動が必要となりますので OS の再起動を行ってください
@@ -275,7 +262,7 @@ OS の再起動が必要となりますので OS の再起動を行ってくだ�
 Python 3.12.1
 ```
 
-## 1-2. Android Studio の導入
+## 2. Android Studio の導入
 
 Android Studio は Android アプリ開発向けの IDE です
 今回の ReactNative 開発で利用する IDE は最初に導入してもらった vscode となるので、IDE としては利用しません
@@ -312,19 +299,6 @@ Android Studio は Android アプリ開発向けの IDE です
 
 上記で進め、以降の画面はそのまま進めてもらえれば OK です
 
-### ①-ex Android SDK のインストール（必要に応じて）
-
-基本的には導入済みの SDK（Android 14.0 SDK）で動作しますので、  
-実施は必須ではありませんが、他のバージョンの SDK が必要になった場合は、  
-以下のように対応してください
-
-インストール完了後、Android Studio を起動し表示された画面にて  
-再度メニューの `Projects` を選択し、画面中央の `More Actions` > `SDK Manager` を押下すると  
-設定画面( `Settings` > `Languages & Frameworks` > `Android SDK`)が開きますので、ここで必要なバージョンの SDK を選択して Apply ボタンを押下してください  
-すると選択した Android SDK のインストールが行われます
-
-ちなみに、ReactNative が動作するのは Android 6.0 以上となっています
-
 ### ② 環境変数の設定
 
 システム環境変数にそれぞれ以下を設定してください
@@ -348,9 +322,11 @@ Running on Windows 10.0.22621
 ～ 長いので以下省略 ～
 ```
 
-## 1-3. アプリケーション起動
+## 3. アプリケーション起動
 
-### 1-3-1. アプリケーション起動手順
+以下手順にて、Android エミュレータ上でアプリを起動します
+
+### 3-1. アプリケーション起動手順
 
 以下コマンドを実行することで、[Metro](https://metrobundler.dev/)という JavaScript の Bundler が起動します  
 これは React Native で記載したコードをトランスパイルし、  
@@ -368,425 +344,3 @@ Running on Windows 10.0.22621
 案内の通り、`a` キーを押下します
 
 すると、Android エミュレータ上でアプリを立ち上げることができます
-
-### 1-3-2. Storybook の起動手順
-
-本プロジェクトはコンポーネントのカタログとなる Storybook を導入しています  
-[Storybook: UI component explorer for frontend developers](https://storybook.js.org/)
-
-作成したコンポーネントをブラウザにて確認できますので、利用してください
-
-Storybook は Node.js のバージョンが 16 系でないと動作してくれないため、  
-一度 Node.js のバージョンを下げます
-
-```
-> nvm install 16.20.2
-> nvm use 16.20.2
-```
-
-対象プロジェクトの`package.json`がある階層まで移動して、以下コマンドを実行してください
-
-```
-> npm install
-または
-> npm i
-```
-
-完了したら、以下コマンドを実行して Storybook サーバーの立ち上げとブラウザの表示がされていれば OK です  
-コマンド実行後、Storybook の画面が自動で立ち上がります
-
-```
-> npm run storybook
-```
-
-### ex. プロジェクトの作成 〜 Storybook 適用まで
-
-以下コマンドを実行し、プロジェクトを作成してください
-
-```
-npx create-expo-app src
-```
-
-コマンド実行後、対話式で処理が進むので、  
-`blank(typescript)`を選択し、続行してください
-
-プロジェクト作成が完了したら、作成したプロジェクトの  
-ディレクトリに移動し、Storybook を導入する  
-※ type オプションに react_native も存在しますが動作しないため、react を指定してください
-
-```
-cd src
-npx -p @storybook/cli sb init --type react
-```
-
-CoreComponents のみであれば、上記の対応で動作しますが、  
-他のライブラリを利用している場合は react-native-web として、  
-Storybook にコンポーネントを渡してやる必要があります
-そのため、以下をコマンドを実施して対象の addon を導入してください
-
-```
-npm install --save-dev @storybook/addon-react-native-web
-```
-
-その後、`./storybook/main.js`に以下を追記してください
-
-```
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: ['react-native-package-name'],
-      },
-    },
-  ],
-};
-```
-
-完了後、以下コマンドを実行し、Storybook が起動すれば OK
-
-```
-npm run storybook
-```
-
-参考：
-[Storybook for React Native tutorial](https://storybook.js.org/tutorials/intro-to-storybook/react-native/en/get-started/),
-[React Native Web addon for Storybook](https://storybook.js.org/addons/@storybook/addon-react-native-web)
-
-# 2. コーディングルール
-
----
-
-## 2-0. 田中コメント（この項番は後で消します）
-
-- 2-2-1.の b-4 と d は要見直しかなと思っています
-  - b-4 と c：pages がただ templates をラップするだけの存在になりそう  
-    SPA 的に処理するなら pages の中で State 管理と表示するコンポーネントの変更を行う、  
-    とかで棲み分けはできそうだけど…  
-    みんなの所感を聞いて判断したい
-  - d：アーキテクチャによって見直しが必要になるため
-- 2-3-2.は記載の統一が目的なので、みんなの好みに合わせたいです
-
----
-
-## 2-1. 目的
-
-メンテナンス性の向上や属人化を防ぐため、プロジェクト全体のコードスタイルの統一化を図る目的で導入します  
-また、エラーが発生しない記法でも、バグの温床となり得るものがあるため、それを防ぐためのルールもこちらで定義します  
-（不足等があれば、適宜追加・変更してください）
-
-## 2-2. フォルダ・ファイルのルール
-
-### 2-2-1. フォルダ構成
-
-フォルダ構成は以下のようにしてください  
-（拡張子がないものはディレクトリとします）
-
-```
-src
-├── __tests__ 等の自動生成ファイル
-├── components
-│   ├── atoms
-│   │   ├── Tekitou
-│   │   │   ├── Tekitou.tsx
-│   │   │   ├── styles.ts
-│   │   │   └── Tekitou.stories.tsx
-│   │   ├── ・
-│   │   ├── ・
-│   │   ├── ・
-│   │   └── Hoge
-│   ├── molecules
-│   ├── organisms
-│   └── templates
-├── pages
-│   ├── index.tsx
-│   └── something.tsx
-├── api
-│   ├── hoge.ts
-│   ├── ・
-│   ├── ・
-│   ├── ・
-│   └── fuga.ts
-├── resources
-│   ├── theme
-│   │   ├── font.ts
-│   │   ├── color.ts
-│   │   ├── ・
-│   │   ├── ・
-│   │   ├── ・
-│   │   └── theme.ts
-│   ├── messages
-│   └── constants
-│
-```
-
-#### **a）src（ルートディレクトリ）**
-
-上記では仮で src にしていますが、管理しやすさの観点から任意の名前に変更推奨とします  
-プロジェクトの名前を設定すると、いざ名前変更がされた時にリファクタリングが必要になるので、プロジェクト名とは無関係の渾名をつけることを推奨します
-
-#### **b）src/components**
-
-各コンポーネントを配置するディレクトリです  
-配置はコンポーネントの粒度<sup>[注 1]</sup>に合わせて、`atoms`、`molecules`、`organisms`、`templates`に配置してください
-
-#### **b-1）src/components/atoms**
-
-最も小さいコンポーネントを配置するディレクトリです  
-`button`や`input`等、html タグ要素レベルのコンポーネントを配置します  
-コンポーネントディレクトリの構成については b-5 を参照してください  
-表示する値は、固定値または props で与えられたもののみとし、このコンポーネントではアプリケーション外部からのデータ取得は行わないものとします
-
-#### **b-2）src/components/molecules**
-
-いくつかの`atoms`コンポーネントを組み合わせて作るコンポーネントを配置します  
-入力画面の 1 入力項目や検索窓相当のコンポーネントをここに配置してください  
-表示する値は、固定値または Props で与えられたもののみとし、このコンポーネントではアプリケーション外部からのデータ取得は行わないものとします
-
-#### **b-3）src/components/organisms**
-
-いくつかの`atoms`、`molecules`コンポーネントを組み合わせて作るコンポーネントを配置します  
-表やスレッドなど、複数の`molecules`コンポーネントを組み合わせる必要があるものや、データ取得が伴うものはこのディレクトリに配置してください
-
-#### **b-4）src/components/templates**
-
-いくつかの`molecules`、`organisms`コンポーネントを組み合わせて作るコンポーネントを配置します  
-ここに配置するのは 1 画面単位のコンポーネントとしてください
-
-#### **b-5）src/components/atoms/Tekitou**
-
-図では atoms の中に配置していますが、コンポーネントを配置する場合は、  
-他のディレクトリ（molecules、organisms、templates）に対しても同様としてください  
-一例として、`Tekitou`としていますが、このディレクトリには対象のコンポーネント名を設定してください  
-（例）コンポーネント ManuBar を定義したファイルを含むディレクトリは、ManuBar とします
-
-この`Tekitou`が 1 コンポーネント単位となるイメージです  
-配下は以下のようにファイルを配置します
-
-- Tekitou.tsx  
-  　コンポーネント定義を行なっているファイルを配置します
-- styles.ts  
-  　対象コンポーネントにて固有で設定が必要なスタイルの定義を行います
-- Tekitou.stories.tsx  
-  　 StoryBook に載せるためのファイルです  
-  　 title 要素には components から対象コンポーネントへのパスを設定してください  
-  　（例）atoms/Tekitou
-
-#### **c）src/pages**
-
-各画面の定義ファイルを配置します
-
-#### **d）src/api**
-
-アプリケーション外部からのデータ取得系処理の定義ファイルを配置します
-
-#### **e）src/resources**
-
-各定数管理ファイルを配置するディレクトリです
-
-#### **e-1）src/resources/theme**
-
-各スタイル系の定数の定義ファイルを配置します  
-ファイルが複数あると利用する際にコンポーネント定義ファイル冒頭にくる import 文の量を増やしてしまう可能性があるので、  
-`theme.ts`にオブジェクトを定義し、そのオブジェクト経由で各テーマの値を利用するようにします
-
-#### **e-2）src/resources/messages**
-
-メッセージリソースを配置します
-
-#### **e-3）src/resources/constants**
-
-共通して利用する定数を配置します
-
-### 2-2-2. ファイル拡張子
-
-純粋な Typescript のみのファイルは`.ts`、JSX 要素を含むファイルは`.tsx`としてください
-
-### 2-2-3. 文字コード・改行コード
-
-- 文字コード：UTF-8
-- 改行コード：CRLF
-
-## 2-3. コーディングスタイル
-
-基本的には ESLint のルールに倣って実装してください  
-（拡張機能を install していれば、リアルタイムで見てくれる）
-
-### 2-3-1. インデント
-
-半角スペース 2 つを 1 単位としてインデントを行ってください  
-（tab 等でのインデントは禁止）
-
-### 2-3-2. 命名規則
-
-#### **a）変数・メソッドは lowerCamelCase で命名する**
-
-```
-const someVariable = 0;
-const someMethod = (someArgument: string) => {};
-```
-
-#### **b）クラス・インターフェース・コンポーネントは UpperCamelCase で命名する**
-
-```
-class SomeClass {
-    someProp: number; // プロパティはlowerCamelCase
-}
-interface SomeInterface {
-    someAttr: string;
-}
-const SomeComponent = (props: SomeInterface) => {}
-```
-
-#### **c）定数は UPPER_SNAKE_CASE で命名する**
-
-```
-const SOME_CONSTANT = 'this is constant.';
-```
-
-#### **d）原則メソッドは動詞（助動詞）始まりとする**
-
-```
-const getOption = () => {};
-const canAddItems = () => {};
-```
-
-例外として、動詞を省略しても良いものは動詞始まりでなくとも良いものとします
-
-```
-const toString = () => {};
-```
-
-### 2-3-3. 変数スコープ
-
-#### **a）変数宣言時は`const`を利用する**
-
-基本的に利用する変数のスコープが不必要に広がらないよう、ブロックスコープとなる`const`、`let`を利用することが推奨されます
-これらは以下のように使い分けられます
-
-- const: 再代入しないもの
-- let: 再代入するもの
-
-ですが、再代入を防ぎ、バグ混入のリスクを軽減するため、変数宣言時は`const`を利用するようにしてください
-
-```
-if (enabled) {
-    const initial = 0;
-    let sum = initial; // どうしても必要な時だけ
-
-    for (const element of array) {
-        sum = sum + element;
-    }
-}
-```
-
-### 2-3-4. object 系
-
-#### **a）オブジェクト生成時は[リテラル構文](https://typescriptbook.jp/reference/values-types-variables/object/object-literal)を利用する**
-
-```
-// bad
-const someObject = new Object();
-
-// good
-const someObject = {};
-```
-
-配列も同様です
-
-```
-// bad
-const someArray = new Array();
-
-// good
-const someArray = [];
-```
-
-### 2-3-5. string 系
-
-#### **a）文字列の連結は行わず、[テンプレートリテラル](https://typescriptbook.jp/reference/values-types-variables/string#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)を利用する**
-
-```
-// bad
-const errorMessage = '登録できる' + data + 'の上限を超えたため、登録できません。';
-
-// good
-const errorMessage = `登録できる${data}の上限を超えたため、登録できません。`;
-
-```
-
-参考：データ定義有無で文字列の内容を変えたい場合、以下のような記載も可能です
-
-```
-const queryParam = `id=1${ data ? `&data=${data}` : '' }`;
-```
-
-#### **b）コード内の通常文字列はシングルクォートまたはバッククォートを使用する**
-
-```
-// bad
-const placeHolder = "Please enter!";
-
-// good
-const placeHolder = 'Please enter!';
-const width = `calc(${theme.full} - ${sidebarWidth}px)`;
-```
-
-#### **c）コンポーネントの属性に設定する固定値はダブルクォートを使用する**
-
-```
-// bad
-<Button type='submit'/>
-
-// good
-<Button type="submit"/>
-```
-
-### 2-3-6. コンポーネント
-
-#### **a）コンポーネント定義は関数コンポーネントを利用する**
-
-記述量を減らすため、コンポーネント定義の際は、クラスコンポーネントではなく、関数コンポーネントを利用してください
-
-```
-// bad
-class Greeting extends React.Component {
-  render() {
-    return <View>Hello, {this.props.name}</View>;
-  }
-}
-
-// good
-function Greeting(props) {
-  return <View>Hello, {props.name}</View>;
-}
-```
-
-# 4. 禁止事項
-
-### 4-1. `any`、`unknown`は原則禁止
-
-`any`、`unknown` = どんな型でも許される型 です  
-コンパイラが型チェックしてくれないので、バグが増える恐れがあります  
-必要箇所以外は基本利用しないようにしてください
-
-### 4-2. `eval()`は利用しない
-
-利用箇所はセキュリティホールになり得るため、eval()は利用しないようにしてください  
-[eval() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/eval#eval_%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84!)
-
-# ex-0. ノート（Github 有料版が使えるなら wiki に移したい）
-
-React では普通に div やら input やらが使えたりしますが、ReactNative はそうじゃないっぽいです
-
-それらに近い挙動となる CoreComponents なる汎用コンポーネントがあったのでこれを使いましょう
-[Core Components and APIs - React Native](https://reactnative.dev/docs/components-and-apis)
-[Core Components and Native Components](https://reactnative.dev/docs/intro-react-native-components)
-
-# ex-1. 参考
-
-[注 1]: Atomic Design
-
-- [Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)：Official なやつ
-- [アトミックデザインとは？メリットや気を付けるポイントを徹底解説！](https://spice-factory.co.jp/web/about-atmicdesign/)：こっちの方がわかりやすいと思う
