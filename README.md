@@ -1,25 +1,7 @@
 # React Native 環境構築手順
 
-以下手順にしたがって環境構築を行ってください
-
-## clone 前の注意点
-
-改行コードの自動変換を`false`にしてください  
-以下コマンドを実行することで設定できます
-
-```
-git config --global core.autocrlf false
-```
-
-以下コマンドで設定確認ができます
-
-```
-git config --global --list
-or
-git config --global -l
-```
-
-一覧の中に`core.autocrlf=false`というような記載があれば OK
+本リポジトリは`React Native`のハンズオン用リポジトリです  
+ハンズオン前に以下手順にしたがって環境構築を行ってください
 
 ## 1. 開発に必要なソフトウェアのインストール
 
@@ -326,7 +308,33 @@ Running on Windows 10.0.22621
 
 以下手順にて、Android エミュレータ上でアプリを起動します
 
-### 3-1. アプリケーション起動手順
+### 3-1. リポジトリの clone
+
+ハンズオンでは、このリポジトリにあるプロジェクトを使います  
+ローカルへ `clone` をしておいてください
+
+Git の導入手順は省きます
+
+#### **clone 前の注意点**
+
+改行コードの自動変換を`false`にしてください  
+以下コマンドを実行することで設定できます
+
+```
+git config --global core.autocrlf false
+```
+
+以下コマンドで設定確認ができます
+
+```
+git config --global --list
+or
+git config --global -l
+```
+
+一覧の中に`core.autocrlf=false`というような記載があれば OK
+
+### 3-2. アプリケーション起動手順
 
 以下コマンドを実行することで、[Metro](https://metrobundler.dev/)という JavaScript の Bundler が起動します  
 これは React Native で記載したコードをトランスパイルし、  
