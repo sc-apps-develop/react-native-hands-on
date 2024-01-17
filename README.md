@@ -1,49 +1,43 @@
 # React Native 環境構築手順
 
-本リポジトリは`React Native`のハンズオン用リポジトリです  
+本リポジトリは [React Native](https://reactnative.dev/) のハンズオン用リポジトリです  
 ハンズオン前に以下手順にしたがって環境構築を行ってください
 
-## 1. 開発に必要なソフトウェアのインストール
-
-まずは開発にて利用する各種ソフトウェアのインストールを行います  
 一応参考サイトも載せておきますが、一生懸命書いたので  
 下の手順に沿ってインストールを進めてもらえると嬉しいです
 
 <u>**注意**</u>
 
 下記手順は WindowsOS 向けの内容です  
-MacOS 利用の方は参考サイトの内容にて環境構築をお願いします
+MacOS 利用の方は[参考サイト](#付録-参考サイト)の内容にて環境構築をお願いします
 
-#### 参考サイト
+## 目次
 
-■ 公式の環境構築手順  
-　英語に自信がある方はこちら
+- [1. 開発に必要なソフトウェアのインストール](#1-開発に必要なソフトウェアのインストール)
+  - [1-1. 統合開発環境](#1-1-統合開発環境)
+  - [1-2. Node.js](#1-2-nodejs)
+  - [1-3. React Native CLI](#1-3-react-native-cli)
+  - [1-4. Chocolatey（Python と Git の導入にしか使わないので飛ばしても OK です）](#1-4-chocolateypython-と-git-の導入にしか使わないので飛ばしても-ok-です)
+  - [1-5. Python（導入済みの方は無視で OK です）](#1-5-python導入済みの方は無視で-ok-です)
+  - [1-6. Git（導入済みの方は無視で OK です）](#1-6-git導入済みの方は無視で-ok-です)
+- [2. android-studio-の導入](#2-android-studio-の導入)
+  - [2-1. Android Studio のインストール](#2-1-android-studio-のインストール)
+  - [2-2. 環境変数の設定](#2-2-環境変数の設定)
+- [3. アプリケーション起動](#3-アプリケーション起動)
+  - [3-1. リポジトリの clone](#3-1-リポジトリの-clone)
+  - [3-2. アプリケーション起動手順](#3-2-アプリケーション起動手順)
+- [付録. 参考サイト](#付録-参考サイト)
 
-- [Setting up the development environment · React Native](https://reactnative.dev/docs/environment-setup?guide=native)
+## 1. 開発に必要なソフトウェアのインストール
 
-■ WindowsOS 向け
+まずは開発にて利用する各種ソフトウェアのインストールを行います
 
-- [React Native を使用した Android 向けの開発の開始](https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/react-native-for-android)
-- [ReactNative の環境構築方法](https://port365.jp/react-native/)
-
-■ MacOS 向け
-
-- [VisualStudioCode で ReactNative のデバッグ環境を構築する](https://qiita.com/t_okkan/items/2b6b94340b837189054c)
-- [【React Native】 開発環境の構築とアプリ作成最初の一歩【初心者向け】](https://qiita.com/keneo/items/aaa5946bfa4d10353302)
-
-#### 参考サイトの手順を見る人向け
-
-後述しますが Android アプリ開発を行うため、JDK のインストールも必要になります  
-上記サイトの手順では Android Studio（Android アプリ開発向け IDE）のインストールと別手順で導入していますが、  
-Android Studio に JDK が同梱されていますので、別でインストールする必要はありません  
-（すでに java8 を導入している方はそれを利用するでも OK です）
-
-### **① 統合開発環境**
+### **1-1. 統合開発環境**
 
 手始めに統合開発環境（以降 IDE）のインストールを行います  
 以下手順で実施してください
 
-### **①-1 Visual Studio Code**
+### **1-1-1. Visual Studio Code インストール**
 
 まずは Visual Studio Code （以降 vscode）をインストールします  
 （すでにインストール済みの方はそれを使うで OK です）  
@@ -52,7 +46,7 @@ https://code.visualstudio.com/
 
 インストーラを起動して道なりにウィザードを進めていけば問題なくインストールできるかと思います
 
-### **①-2 フォーマッタ（vscode の拡張機能、ここはお好みで良いです）**
+### **1-1-2 フォーマッタ（vscode の拡張機能、ここはお好みで良いです）**
 
 以下の拡張機能のインストールを行ってください
 
@@ -64,8 +58,7 @@ https://code.visualstudio.com/
 右上の `Open Settings(JSON)` のアイコンを押下すると対象のファイルが開かれます
 
 ※ Windows 環境の場合は対象ファイルは以下にありますので、こちらを編集しても OK です  
-`(ユーザーのホームディレクトリ)\AppData\Roaming\Code\User\settings.json`　　
-ユーザーのホームディレクトリ = C:\Users\\(windows アカウント名)
+`C:\Users\(windows アカウント名)\AppData\Roaming\Code\User\settings.json`
 
 ```
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -83,16 +76,16 @@ https://code.visualstudio.com/
   ]
 ```
 
-### **② Node.js インストール**
+### **1-2. Node.js**
 
-ReactNative では Javascript を動作させる必要がありますので、  
+React Native では Javascript を動作させる必要がありますので、  
 Javascript の実行環境となる Node.js を導入します  
 LTS 版の Node.js であれば問題ないかと思いますが、  
 こちらで動作確認ができている v18 系の Node.js 導入を行います
 
 以下の手順に沿ってインストールしてください
 
-#### **②-1 nvm-windows インストール**
+#### **1-2-1. nvm-windows インストール**
 
 まずはバージョンの選択をして、動作環境を構築できるようマネージャソフトを導入します
 
@@ -107,7 +100,7 @@ LTS 版の Node.js であれば問題ないかと思いますが、
 1.1.12
 ```
 
-#### **②-2 nvm を使って Node.js インストール**
+#### **1-2-2. nvm を使って Node.js インストール**
 
 以下コマンドで、nvm が管理している Node.js のバージョン情報を確認できます
 
@@ -178,7 +171,7 @@ Node.js がインストールされているものと思われます
 v18.19.0
 ```
 
-### **③ React Native CLI**
+### **1-3. React Native CLI**
 
 Node.js の インストールが済めば、パッケージマネージャーである  
 npm の利用も可能となっているかと思います
@@ -189,13 +182,13 @@ React Native 開発の CLI もありますので、これをインストール�
 npm install -g react-native-cli
 ```
 
-### **④ Chocolatey（Python の導入にしか使わないので飛ばしても OK です）**
+### **1-4. Chocolatey（Python と Git の導入にしか使わないので飛ばしても OK です）**
 
 以降諸々のインストールを行いますので、  
 管理を容易にするべくパッケージマネージャーとなる Chocolatey を導入します  
 Linux の yum などと同じような立ち位置のものと思ってください
 
-以下リンクより `Now run the following command:` にあるコマンドをコピー
+以下リンクより `Now run the following command:` にあるコマンドをコピー  
 [Chocolatey Software | Installing Chocolatey](https://chocolatey.org/install#individual)
 
 たぶん以下のようなコマンドがコピーされるかと思います
@@ -214,16 +207,16 @@ Linux の yum などと同じような立ち位置のものと思ってくださ
 2.2.2
 ```
 
-### **⑤ Python インストール （導入済みの方は無視で OK です）**
+### **1-5. Python（導入済みの方は無視で OK です）**
 
-ReactNative はビルド時に Python を利用しているため Python の実行環境が必要となります
+React Native はビルド時に Python を利用しているため Python の実行環境が必要となります
 
 #### Chocolatey を導入している方
 
 以下コマンドを叩くだけだけです
 
 ```
-> choco install -y python
+> choco install python
 ```
 
 #### Chocolatey を導入していない方
@@ -244,15 +237,45 @@ OS の再起動が必要となりますので OS の再起動を行ってくだ�
 Python 3.12.1
 ```
 
+### **1-6. Git（導入済みの方は無視で OK です）**
+
+おなじみの Git です  
+React Native 開発環境で利用するわけではありませんが、  
+ハンズオンで利用するソースコードは Github 越しに展開しますので  
+導入されていない方は導入をお願いします
+
+#### Chocolatey を導入している方
+
+以下コマンドを叩くだけだけです
+
+```
+> choco install git
+```
+
+#### Chocolatey を導入していない方
+
+Python と同様に [Git の公式サイト](https://git-scm.com/)よりインストーラをダウンロード、起動してインストールを行ってください  
+最新版で OK です
+
+#### Git インストールの確認
+
+例によって、バージョン確認コマンドを叩いてバージョンが帰ってくれば OK です
+
+```
+> git --version
+
+git version 2.43.0.windows.1
+```
+
 ## 2. Android Studio の導入
 
-Android Studio は Android アプリ開発向けの IDE です
-今回の ReactNative 開発で利用する IDE は最初に導入してもらった vscode となるので、IDE としては利用しません
+Android Studio は Android アプリ開発向けの IDE です  
+今回の React Native 開発で利用する IDE は最初に導入してもらった vscode となるので、IDE としては利用しません
 
 ただ、Android Studio には AndroidOS のエミュレータや Android SDK など、  
 便利アイテムが同梱されていますので Android Studio の導入を行います
 
-### ① Android Studio のインストール
+### 2-1. Android Studio のインストール
 
 [Android Studio の公式サイト](https://developer.android.com/studio?hl=ja)よりインストーラをダウンロードしてください  
 （WindowsOS、MacOS どちらも上記サイトよりインストーラが取得できるはず）
@@ -281,15 +304,15 @@ Android Studio は Android アプリ開発向けの IDE です
 
 上記で進め、以降の画面はそのまま進めてもらえれば OK です
 
-### ② 環境変数の設定
+### 2-2. 環境変数の設定
 
 システム環境変数にそれぞれ以下を設定してください
 
-| 対応     | 変数（キー） | 値                                                                      |
-| -------- | ------------ | ----------------------------------------------------------------------- |
-| 新規追加 | JAVA_HOME    | C:\Program Files\Android\Android Studio\jbr                             |
-| 新規追加 | ANDROID_HOME | (ユーザーのホームディレクトリ)\AppData\Local\Android\Sdk                |
-| 追記     | path         | (ユーザーのホームディレクトリ)\AppData\Local\Android\Sdk\platform-tools |
+| 対応     | 変数（キー） | 値                                                                        |
+| -------- | ------------ | ------------------------------------------------------------------------- |
+| 新規追加 | JAVA_HOME    | C:\Program Files\Android\Android Studio\jbr                               |
+| 新規追加 | ANDROID_HOME | C:\Users\\(windows アカウント名)\AppData\Local\Android\Sdk                |
+| 追記     | path         | C:\Users\\(windows アカウント名)\AppData\Local\Android\Sdk\platform-tools |
 
 `path` 設定の確認のため以下コマンドを実行し、記載のように表示されれば OK です
 
@@ -308,14 +331,13 @@ Running on Windows 10.0.22621
 
 以下手順にて、Android エミュレータ上でアプリを起動します
 
-### 3-1. リポジトリの clone
+### 3-1. リポジトリのクローン
 
 ハンズオンでは、このリポジトリにあるプロジェクトを使います  
-ローカルへ `clone` をしておいてください
+ローカルへクローンしておいてください  
+場所は任意で OK です
 
-Git の導入手順は省きます
-
-#### **clone 前の注意点**
+#### **クローン前の注意点**
 
 改行コードの自動変換を`false`にしてください  
 以下コマンドを実行することで設定できます
@@ -334,15 +356,34 @@ git config --global -l
 
 一覧の中に`core.autocrlf=false`というような記載があれば OK
 
+#### vscode にて利用するプロジェクトを開く
+
+クローンが完了したら、vscode にてリポジトリにある `study-place` というフォルダーを開いてください  
+この対応は必須ではありませんが、以降ここにあるファイルを vscode にて編集しますし、  
+この階層まで移動してコマンドを実行することが多々ありますので、  
+この操作を行っておくことを推奨します
+
 ### 3-2. アプリケーション起動手順
 
-以下コマンドを実行することで、[Metro](https://metrobundler.dev/)という JavaScript の Bundler が起動します  
-これは React Native で記載したコードをトランスパイルし、  
-依存関係を含めた開発モジュールを 1 つの JavaScript ファイルにまとめます
+クローンが完了したらコマンドプロンプトを開き、  
+`ローカルのリポジトリ/study-place` に移動します
+
+「[vscode-にて利用するプロジェクトを開く](#vscode-にて利用するプロジェクトを開く)」の対応を実施している方は、  
+`Ctrl + @` などで vscode から CUI を開くだけで OK です
+
+カレントディレクトリを `ローカルのリポジトリ/study-place` とすることができたら、  
+以下コマンドを実行してください
 
 ```
 > npm start
 ```
+
+このコマンド実行により、[Metro](https://metrobundler.dev/) という JavaScript の Bundler が起動します  
+（厳密には [Expo](https://expo.dev/) という React Native 開発用のツールが起動し、この [Expo](https://expo.dev/) が [Metro](https://metrobundler.dev/) を起動しています）
+
+この [Metro](https://metrobundler.dev/) は React Native で記載したコードをトランスパイルし、  
+依存関係を含めた開発モジュールを 1 つの JavaScript ファイルにまとめる処理をしてくれるものです  
+[webpack](https://webpack.js.org/) などと同じ役割のものと思ってください
 
 起動するとコンソール上に以下のような出力がされます
 
@@ -352,3 +393,27 @@ git config --global -l
 案内の通り、`a` キーを押下します
 
 すると、Android エミュレータ上でアプリを立ち上げることができます
+
+## 付録. 参考サイト
+
+■ 公式の環境構築手順  
+　英語に自信がある方はこちら
+
+- [Setting up the development environment · React Native](https://reactnative.dev/docs/environment-setup?guide=native)
+
+■ WindowsOS 向け
+
+- [React Native を使用した Android 向けの開発の開始](https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/react-native-for-android)
+- [ReactNative の環境構築方法](https://port365.jp/react-native/)
+
+■ MacOS 向け
+
+- [VisualStudioCode で ReactNative のデバッグ環境を構築する](https://qiita.com/t_okkan/items/2b6b94340b837189054c)
+- [【React Native】 開発環境の構築とアプリ作成最初の一歩【初心者向け】](https://qiita.com/keneo/items/aaa5946bfa4d10353302)
+
+#### 参考サイトの手順を見る人向け
+
+後述しますが Android アプリ開発を行うため、JDK のインストールも必要になります  
+上記サイトの手順では Android Studio（Android アプリ開発向け IDE）のインストールと別手順で導入していますが、  
+Android Studio に JDK が同梱されていますので、別でインストールする必要はありません  
+（すでに java8 を導入している方はそれを利用するでも OK です）
