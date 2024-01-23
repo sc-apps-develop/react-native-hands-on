@@ -4,7 +4,7 @@
 ハンズオン前に以下手順にしたがって環境構築を行ってください
 
 一応参考サイトも載せておきますが、一生懸命書いたので  
-下の手順に沿ってインストールを進めてもらえると嬉しいです
+下の手順に沿ってインストールを進めていただけると嬉しいです
 
 <u>**注意**</u>
 
@@ -53,28 +53,44 @@ https://code.visualstudio.com/
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-上記拡張機能の導入後、vscode の`setting.json`に以下を追加してください  
-`File` > `Preferences` > `Settings` から設定を開き、  
-右上の `Open Settings(JSON)` のアイコンを押下すると対象のファイルが開かれます
+#### **補足（フォーマッタ設定を変えたい人向け、そうでない人は特段操作は必要ありません）**
 
-※ Windows 環境の場合は対象ファイルは以下にありますので、こちらを編集しても OK です  
-`C:\Users\(windows アカウント名)\AppData\Roaming\Code\User\settings.json`
+設定内容（`/.vscode/settings.json`）を見ていただけるとわかりますが、  
+設定内容は以下の通りです
 
 ```
+{
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "editor.insertSpaces": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
   "eslint.validate": [
     "javascript",
-    "typescriptreact",
-    "javascript",
+    "javascriptreact",
+    "typescript",
     "typescriptreact"
   ]
+}
 ```
+
+好き嫌いはあると思うので、気に入らないときは上記を編集してください
+
+vscode の UI から編集するときは以下<u>**いずれか**</u>の操作で設定画面が開けますのでそこから編集可能です  
+(a). `File` > `Preferences` > `Settings` から設定を開く  
+(b). `Ctrl + ,` を押下する
+
+<u>**注意**（プロジェクト業務で vscode を利用されている方向け）</u>  
+この時 <u>User 設定の方を編集しないよう</u> 注意してください  
+（プロジェクト側でコーディングを行う際に影響がないようにするため）
+
+↑ の操作で開いた設定画面は初期表示時、User 設定の画面が表示されます  
+表示後、Workspace 設定に切り替えてから編集するようにしてください
+
+![フォーマッタ設定](/readme_img/formatter_settings.png)
 
 ### **1-2. Node.js**
 
@@ -274,7 +290,7 @@ git version 2.43.0.windows.1
 ## 2. Android Studio の導入
 
 Android Studio は Android アプリ開発向けの IDE です  
-今回の React Native 開発で利用する IDE は最初に導入してもらった vscode となるので、IDE としては利用しません
+今回の React Native 開発で利用する IDE は最初に導入していただいた vscode となるので、IDE としては利用しません
 
 ただ、Android Studio には AndroidOS のエミュレータや Android SDK など、  
 便利アイテムが同梱されていますので Android Studio の導入を行います
@@ -306,7 +322,7 @@ Android Studio は Android アプリ開発向けの IDE です
 
 ![AndroidStudio_セットアップウィザード_エミュレータ設定](./readme_img/androidstudio_setup_wizard_emulator_settings.png)
 
-上記で進め、以降の画面はそのまま進めてもらえれば OK です
+上記で進め、以降の画面はそのまま進めていただければ OK です
 
 ### 2-2. 環境変数の設定
 
@@ -366,6 +382,10 @@ git config --global -l
 この対応は必須ではありませんが、以降ここにあるファイルを vscode にて編集しますし、  
 この階層まで移動してコマンドを実行することが多々ありますので、  
 この操作を行っておくことを推奨します
+
+併せて[フォーマッタ設定](#1-1-2-フォーマッタvscode-の拡張機能ここはお好みで良いです)を行った方は、設定が正しくできているか確認してください  
+この設定後、適当なソースコード（`/study-place/App.tsx` 等）で  
+ファイル保存やコピペを行った際にフォーマットが走れば OK です
 
 ### 3-2. アプリケーション起動手順
 
