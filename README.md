@@ -53,7 +53,7 @@ https://code.visualstudio.com/
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-#### **補足（フォーマッタ設定を変えたい人向け、そうでない人は特段操作は必要ありません）**
+#### **補足（フォーマッタ設定を変えたい人向け、特にこだわりが無い人は操作不要です）**
 
 設定内容（`/.vscode/settings.json`）を見ていただけるとわかりますが、  
 設定内容は以下の通りです
@@ -80,8 +80,9 @@ https://code.visualstudio.com/
 好き嫌いはあると思うので、気に入らないときは上記を編集してください
 
 vscode の UI から編集するときは以下<u>**いずれか**</u>の操作で設定画面が開けますのでそこから編集可能です  
-(a). `File` > `Preferences` > `Settings` から設定を開く  
-(b). `Ctrl + ,` を押下する
+(a). `Ctrl + ,` を押下する  
+(b). `File` > `Preferences` > `Settings` から設定を開く  
+　 日本語設定されている場合は ファイル > ユーザー設定 > 設定 から設定を開く
 
 <u>**注意**（プロジェクト業務で vscode を利用されている方向け）</u>  
 この時 <u>User 設定の方を編集しないよう</u> 注意してください  
