@@ -86,7 +86,7 @@ vscode の UI から編集するときは以下<u>**いずれか**</u>の操作�
 
 <u>**注意**（プロジェクト業務で vscode を利用されている方向け）</u>  
 この時 <u>User 設定の方を編集しないよう</u> 注意してください  
-（プロジェクト側でコーディングを行う際に影響がないようにするため）
+（プロジェクトにて vscode を利用している場合、影響がないようにするため）
 
 ↑ の操作で開いた設定画面は初期表示時、User 設定の画面が表示されます  
 表示後、Workspace 設定に切り替えてから編集するようにしてください
@@ -113,7 +113,8 @@ nvm（Node Version Manager）という、読んで字のごとく
 以下リンクにアクセスして、最新バージョンの `nvm-setup.exe` をダウンロードし、インストールを行なってください  
 [Releases · coreybutler/nvm-windows](https://github.com/coreybutler/nvm-windows/releases)
 
-以下コマンドを叩いて、バージョンが返ってくれば OK です
+コマンドプロンプト（[※](#※-コマンドの実行について)）にて以下コマンドを叩いて、  
+バージョンが返ってくれば OK です
 
 ```
 > nvm version
@@ -121,8 +122,17 @@ nvm（Node Version Manager）という、読んで字のごとく
 1.1.12
 ```
 
+#### **※ コマンドの実行について**
+
+以降の手順もコマンドの実行操作を何度か行います  
+<u>**誘導がない限りは「管理者として実行」で開いたコマンドプロンプト**</u>にて、  
+コマンドを実行するようにお願いします
+
+「管理者として実行」とした場合であれば、PowerShell でも可能です
+
 #### **1-2-2. nvm を使って Node.js インストール**
 
+前項に続きコマンドプロンプトを利用します  
 以下コマンドで、nvm が管理している Node.js のバージョン情報を確認できます
 
 ```
@@ -155,8 +165,7 @@ This is a partial list. For a complete list, visit https://nodejs.org/en/downloa
 ```
 
 上記確認後、LTS 18.系 の最新版を導入してください  
-今回（2023/01/15 時点）は以下コマンドを実行し、18.19.0 を導入します  
-※ 以降 expo や Storybook のアップデートで別バージョンが利用できるようになる可能性があります
+今回（2023/01/15 時点）は以下コマンドを実行し、18.19.0 を導入します
 
 ```
 > nvm install 18.19.0
@@ -218,7 +227,8 @@ Linux の yum などと同じような立ち位置のものと思ってくださ
 > Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-コマンドプロンプトを管理者権限で実行より開き、コピーしたコマンドを実行してください
+上記コマンドを実行しますが、<u>コマンドプロンプトでは実行できません</u>  
+**PowerShell**を管理者権限で開き、コピーしたコマンドを実行してください
 
 以下コマンドを実行してバージョンが帰ってきたら Chocolatey のインストールは完了です
 
@@ -234,11 +244,16 @@ React Native はビルド時に Python を利用しているため Python の実
 
 #### Chocolatey を導入している方
 
-以下コマンドを叩くだけだけです
+コマンドプロンプトを開き、以下コマンドを叩くだけだけです
 
 ```
 > choco install python
 ```
+
+Chocolatey を利用したインストールは失敗することがあるようです  
+上記コマンドを実行して、インストールが正常に行われなければ、  
+[Chocolatey を導入していない方](#chocolatey-を導入していない方)に記載の手順同様、  
+[Python の公式サイト](https://www.python.org/)よりインストーラを取得し、インストーラよりインストールを行ってください
 
 #### Chocolatey を導入していない方
 
@@ -250,7 +265,7 @@ React Native はビルド時に Python を利用しているため Python の実
 Python はインストール後、実行可能とするために  
 OS の再起動が必要となりますので OS の再起動を行ってください
 
-例によって、バージョン確認コマンドを叩いてバージョンが帰ってくれば OK です
+例によって、バージョン確認コマンドを叩いてバージョンが返ってくれば OK です
 
 ```
 > python --version
@@ -267,7 +282,7 @@ React Native 開発環境で利用するわけではありませんが、
 
 #### Chocolatey を導入している方
 
-以下コマンドを叩くだけだけです
+コマンドプロンプトを開き、以下コマンドを叩くだけだけです
 
 ```
 > choco install git
@@ -342,7 +357,7 @@ Android Studio は Android アプリ開発向けの IDE です
 
 Android Debug Bridge version 1.0.41
 Version 34.0.5-10900879
-Installed as C:\Users\a17001092\AppData\Local\Android\Sdk\platform-tools\adb.exe
+Installed as C:\Users\(windows アカウント名)\AppData\Local\Android\Sdk\platform-tools\adb.exe
 Running on Windows 10.0.22621
 
 ～ 長いので以下省略 ～
@@ -367,6 +382,24 @@ Running on Windows 10.0.22621
 git config --global core.autocrlf false
 ```
 
+<u>※.gitconfig が存在しない旨のエラーが出力された場合</u>
+
+新規導入の場合は .gitconfig ファイルが存在せず、  
+上記コマンドを実行してもエラーとなる場合があります
+
+その際は以下のコマンドを実行してください
+
+```
+> git config --global --edit
+```
+
+おそらくコマンドプロンプト上でエディターが開くかと思いますので、  
+`:q!`と入力し Enter キーを押すとエディターを閉じることができます
+
+このコマンドの実行により .gitconfig ファイルが作成されるかと思います  
+以下パスに .gitconfig ファイルができていれば OK です  
+`C:\Users\(windows アカウント名)\.gitconfig`
+
 以下コマンドで設定確認ができます
 
 ```
@@ -375,7 +408,7 @@ or
 git config --global -l
 ```
 
-一覧の中に`core.autocrlf=false`というような記載があれば OK
+一覧の中に`core.autocrlf=false`というような記載があれば OK です
 
 #### vscode にて利用するプロジェクトを開く
 
@@ -394,10 +427,23 @@ git config --global -l
 `ローカルのリポジトリ/study-place` に移動します
 
 「[vscode-にて利用するプロジェクトを開く](#vscode-にて利用するプロジェクトを開く)」の対応を実施している方は、  
-`Ctrl + @` などで vscode から CUI を開くだけで OK です
+`Ctrl + @` などで vscode から CUI を開くだけで OK です  
+この操作を行った場合デフォルトで PowerShell が起動するかと思います  
+以降の操作は PowerShell でも実行可能です
 
 カレントディレクトリを `ローカルのリポジトリ/study-place` とすることができたら、  
-以下コマンドを実行してください
+以下コマンドを記載の順で実行してください
+
+①
+
+```
+> npm i
+```
+
+このコマンドの実行で、npm が管理するパッケージをローカルにダウンロードされます  
+ダウンロードされたパッケージは `/study-place/node_modules` というフォルダの下に配置されます
+
+②
 
 ```
 > npm start
@@ -417,7 +463,10 @@ git config --global -l
 今回は Android エミュレータにて起動を行いますので、  
 案内の通り、`a` キーを押下します
 
-すると、Android エミュレータ上でアプリを立ち上げることができます
+すると、Android エミュレータ上でアプリを立ち上げることができます  
+下記のような画面が表示されれば OK です
+
+![Android上でアプリ起動](/readme_img/start_app.png)
 
 ## 付録. 参考サイト
 
