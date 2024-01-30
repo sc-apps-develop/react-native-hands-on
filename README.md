@@ -46,14 +46,14 @@ https://code.visualstudio.com/
 
 インストーラを起動して道なりにウィザードを進めていけば問題なくインストールできるかと思います
 
-### **1-1-2 フォーマッタ（vscode の拡張機能、ここはお好みで良いです）**
+### **1-1-2 フォーマッター、リンター（vscode の拡張機能、ここはお好みで良いです）**
 
 以下の拡張機能のインストールを行ってください
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint（厳密にはリンター）](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-#### **補足（フォーマッタ設定を変えたい人向け、特にこだわりが無い人は操作不要です）**
+#### **補足（フォーマッター設定を変えたい人向け、特にこだわりが無い人は操作不要です）**
 
 設定内容（`/.vscode/settings.json`）を見ていただけるとわかりますが、  
 設定内容は以下の通りです
@@ -91,7 +91,7 @@ vscode の UI から編集するときは以下<u>**いずれか**</u>の操作�
 ↑ の操作で開いた設定画面は初期表示時、User 設定の画面が表示されます  
 表示後、Workspace 設定に切り替えてから編集するようにしてください
 
-![フォーマッタ設定](/readme_img/formatter_settings.png)
+![フォーマッター設定](/readme_img/formatter_settings.png)
 
 ### **1-2. Node.js**
 
@@ -450,7 +450,7 @@ git config --global -l
 この階層まで移動してコマンドを実行することが多々ありますので、  
 この操作を行っておくことを推奨します
 
-併せて[フォーマッタ設定](#1-1-2-フォーマッタvscode-の拡張機能ここはお好みで良いです)を行った方は、設定が正しくできているか確認してください  
+併せて[フォーマッター設定](#1-1-2-フォーマッターリンターvscode-の拡張機能ここはお好みで良いです)を行った方は、設定が正しくできているか確認してください  
 この設定後、適当なソースコード（`/study-place/App.tsx` 等）で  
 ファイル保存やコピペを行った際にフォーマットが走れば OK です
 
@@ -522,5 +522,4 @@ git config --global -l
 
 Android アプリ開発を行うため、JDK のインストールも必要になります  
 上記サイトの手順では Android Studio（Android アプリ開発向け IDE）のインストールと別手順で導入していますが、  
-Android Studio に JDK が同梱されていますので、別でインストールする必要はありません  
-（すでに java8 を導入している方はそれを利用するでも OK です）
+Android Studio に JDK が同梱されていますので、別でインストールする必要はありません
