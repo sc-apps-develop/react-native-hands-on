@@ -51,7 +51,7 @@ https://code.visualstudio.com/
 以下の拡張機能のインストールを行ってください
 
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ESLint（厳密にはリンター）](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 #### **補足（フォーマッター設定を変えたい人向け、特にこだわりが無い人は操作不要です）**
 
