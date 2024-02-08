@@ -1,30 +1,37 @@
-// import（コアコンポーネントを使用するのに必要）
-import { StyleSheet, Text, View, Alert, Image, Button } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Button, Image, Alert } from "react-native";
 
-// メイン処理
-export const CoreComponent = () => {
+export default function App() {
   return (
-    // 課題：Text、Button、Imageを写経してください
-    <View style={styles.container}></View>
+    <View style={styles.container}>
+      <Text>ハロー, タカシ!</Text>
+      <Button
+        title="Press me"
+        onPress={() => Alert.alert("Simple Button pressed")}
+      />
+      <Image
+        style={styles.tinyLogo}
+        source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
+      />
+    </View>
   );
-};
+}
 
-// スタイル適用（ここは気にしなくてよいです）
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignItems: "center",
     justifyContent: "center",
-    padding: 20,
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
   },
   boldStyle: {
     fontWeight: "bold",
   },
   redStyle: {
     color: "red",
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });
