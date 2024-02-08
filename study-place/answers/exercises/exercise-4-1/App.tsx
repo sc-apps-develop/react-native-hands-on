@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { GreetingButton } from "./GreetingButton";
 
 export default function App() {
+  // ボタンが押下された際の処理を外出ししたので、ここに記載
   const onPress = () => {
     alert("変数2");
   };
