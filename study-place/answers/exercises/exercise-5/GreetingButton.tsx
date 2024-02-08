@@ -6,6 +6,7 @@ interface GreetingButtonProps {
   disabled: boolean;
 }
 
+// スタイルを定義
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#06BEF0",
@@ -26,10 +27,12 @@ export const GreetingButton = (props: GreetingButtonProps) => {
 
   return (
     <View>
+      {/* ↓スタイル適用！ */}
       <TouchableHighlight
         style={styles.button}
         onPress={disabled ? () => {} : onPress}
       >
+        {/* ↓スタイル適用！ */}
         <Text style={styles.buttonText}>{buttonTitle}</Text>
       </TouchableHighlight>
     </View>

@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { MyImage } from "./MyImage";
 
-// 省略…
-
 export default function App() {
   return (
     <View style={styles.container}>
@@ -14,8 +12,6 @@ export default function App() {
     </View>
   );
 }
-
-// 省略…
 
 const styles = StyleSheet.create({
   container: {

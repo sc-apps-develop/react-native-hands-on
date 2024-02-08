@@ -11,8 +11,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      {/* <MyImage width={100} height={100} /> */}
       <GreetingButton buttonTitle="変数1" onPress={onPress} disabled={false} />
+      {/* ↑追記！ */}
       <StatusBar style="auto" />
     </View>
   );

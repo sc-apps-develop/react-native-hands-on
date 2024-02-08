@@ -1,5 +1,7 @@
+// コアコンポーネント「Image」と「View」を使うのでインポート！
 import { Image, View } from "react-native";
 
+// コンポーネントを定義
 export const MyImage = () => {
   return (
     <View>

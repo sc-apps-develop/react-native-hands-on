@@ -6,6 +6,8 @@ interface GreetingButtonProps {
   disabled: boolean;
 }
 
+// 使いまわすだけなので、GreetingButtonに手を加える必要なし！
+
 export const GreetingButton = (props: GreetingButtonProps) => {
   const { buttonTitle, onPress, disabled } = props;
 

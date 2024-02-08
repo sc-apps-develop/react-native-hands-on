@@ -5,7 +5,7 @@ interface MyImageProps {
   height: number;
 }
 
-// 省略…
+// スタイルを定義
 const styles = StyleSheet.create({
   container: {
     marginTop: 80,

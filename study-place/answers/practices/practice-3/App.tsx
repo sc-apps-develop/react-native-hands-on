@@ -3,19 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { MyImage } from "./MyImage";
 
-// 省略…
-
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <MyImage />
+      <MyImage /> {/* ←追記！ */}
       <StatusBar style="auto" />
     </View>
   );
 }
-
-// 省略…
 
 const styles = StyleSheet.create({
   container: {

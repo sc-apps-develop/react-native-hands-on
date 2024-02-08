@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { GreetingButton } from "./GreetingButton";
 
-// 省略…
-
 export default function App() {
   return (
     <View style={styles.container}>
@@ -23,8 +21,6 @@ export default function App() {
     </View>
   );
 }
-
-// 省略…
 
 const styles = StyleSheet.create({
   container: {

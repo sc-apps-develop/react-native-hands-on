@@ -4,11 +4,18 @@ import { StyleSheet, Text, View } from "react-native";
 import { GreetingButton } from "./GreetingButton";
 
 export default function App() {
+  const onPress = () => {
+    alert("Hello World");
+  };
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      {/* <MyImage width={100} height={100} /> */}
-      <GreetingButton />
+      <GreetingButton
+        buttonTitle="ここを押してね！"
+        onPress={onPress}
+        disabled={false}
+      />
       <StatusBar style="auto" />
     </View>
   );
