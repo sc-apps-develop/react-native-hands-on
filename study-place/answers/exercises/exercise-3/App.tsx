@@ -1,13 +1,16 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import {
+  StyleSheet,
+  View,
+} from 'react-native';
 
-import { GreetingButton } from "./GreetingButton";
+import { PostItem } from './PostItem';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <GreetingButton /> {/* ←追記！ */}
+      {/* <Text>Open up App.tsx to start working on your app!</Text> */}
+      <PostItem />
       <StatusBar style="auto" />
     </View>
   );
@@ -19,5 +22,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  boldStyle: {
+    fontWeight: "bold",
+  },
+  redStyle: {
+    color: "red",
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });
