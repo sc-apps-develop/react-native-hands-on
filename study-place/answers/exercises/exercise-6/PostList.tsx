@@ -4,6 +4,7 @@
 
 // 使用するコアコンポーネントをインポートしてね
 // import { View } from "react-native"; // ←この行のコメントアウトは解除する
+// import { PostItem } from './PostItem'; // ←この行のコメントアウトは解除する
 
 /* ここでコンポーネントを宣言してね */ {
 
