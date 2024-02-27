@@ -1,20 +1,19 @@
 // 使用するコアコンポーネントをインポートしてね
 import {
   Image,
-  ImageSourcePropType,
   Text,
   View,
 } from 'react-native';
 
 interface PostItemProps {
-  imageSource: ImageSourcePropType;
+  imageUrl: string;
   userName: string;
   postContent: string;
 }
 
 // コンポーネントを定義
 export const PostItem = (props: PostItemProps) => {
-  const {imageSource, userName, postContent} = props;
+  const {imageUrl, userName, postContent} = props;
 
   // JSXを返却
   return (
@@ -23,7 +22,9 @@ export const PostItem = (props: PostItemProps) => {
         <Image
           width={50}
           height={50}
-          source={imageSource}
+          source={{
+            uri: imageUrl,
+          }}
         />
         <Text>{userName}</Text>
       </View>
