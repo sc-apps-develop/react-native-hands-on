@@ -8,5 +8,5 @@
 /* ここでコンポーネントを宣言してね */ {
 
   // 表示内容（JSX）を返却してね
-  return <View></View>;
+  // return <View></View>;
 }

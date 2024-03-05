@@ -3,11 +3,34 @@
  */
 
 // 使用するコアコンポーネントをインポートしてね
-// import { View } from "react-native"; // ←この行のコメントアウトは解除する
-// import { PostItem } from './PostItem'; // ←この行のコメントアウトは解除する
+import {
+  ScrollView,
+  StyleSheet,
+} from 'react-native'; // ←この行のコメントアウトは解除する
 
-/* ここでコンポーネントを宣言してね */ {
+import {
+  PostItem,
+  PostItemProps,
+} from './PostItem'; // ←この行のコメントアウトは解除する
+
+interface PostListProps {
+  itemList: PostItemProps[]
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: "90%",
+    margin: 30
+  }
+});
+
+export const PostList = (props: PostListProps) => {
+  const {itemList} = props;
 
   // 表示内容（JSX）を返却してね
-  return <View></View>;
+  return <ScrollView style={styles.container}>
+    {itemList.map((item, index) => {
+      return (<PostItem key={index} {...item}/>)
+    })}
+  </ScrollView>;
 }
