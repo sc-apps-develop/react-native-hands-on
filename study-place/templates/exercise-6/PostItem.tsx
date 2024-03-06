@@ -1,22 +1,16 @@
 import {
   Image,
-  Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
+// 新しくインターフェースを作って、PostUserを定義してね
 
-// インターフェースを新しく定義
-// ※ここ以外でも使いそうな型なので、別ファイルとして定義しておくのもあり！
-export interface PostUser {
+// PostUser型の変数と、postContentを受け取るように編集してみてね
+interface PostItemProps {
   imageUrl: string;
   userName: string;
-}
-
-export interface PostItemProps {
-  postUser: PostUser; // PostUserを受け取るよう修正
   postContent: string;
 }
 
@@ -30,6 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     gap: 8,
 
+    width: "80%",
     paddingBottom: 8,
     paddingHorizontal: 8,
     marginVertical: 8,
@@ -46,15 +41,11 @@ const styles = StyleSheet.create({
   },
   contentText: {
     fontSize: 18,
-  },
-  buttons: {
-    padding: 8
   }
 });
 
 export const PostItem = (props: PostItemProps) => {
-  const {postUser, postContent} = props;
-  const {imageUrl, userName} = postUser;
+  const {imageUrl, userName, postContent} = props;
 
   return (
     <View style={styles.container}>
@@ -69,11 +60,7 @@ export const PostItem = (props: PostItemProps) => {
       <View>
         <Text style={styles.userNameText}>{userName}</Text>
         <Text style={styles.contentText}>{postContent}</Text>
-        <View>
-          <Pressable onTouchEnd={()=>{alert("いいね！")}}>
-            <Feather name="heart" size={16} color="#999999" />
-          </Pressable>
-        </View>
+        {/* ここら辺にいいねボタンを表示できると良いかも */}
       </View>
     </View>
   );

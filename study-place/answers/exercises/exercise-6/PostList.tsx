@@ -19,8 +19,7 @@ interface PostListProps {
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    margin: 30
+    marginVertical: 30
   }
 });
 
